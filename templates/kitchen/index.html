@@ -1,29 +1,9 @@
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport"
-        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Django Kitchen</title>
+{% extends "base.html" %}
 
-  <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
-      integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N"
-      crossorigin="anonymous"
-  >
+{% block content %}
+  <h1>Here be something</h1>
 
-  {% load static %}
-  <link rel="stylesheet" href="{% static 'css/styles.css' %}">
-</head>
-<body>
-<h1>Here be kitchen</h1>
-<p>We have:</p>
-<hr>
-
-<p>{{ num_cooks }} Cooks</p>
-<p>{{ num_dishes }} Dishes</p>
-
-</body>
-</html>
+  <p>We have</p>
+  <p>{{ num_cooks }} Cooks</p>
+  <p>{{ num_dishes }} Dishes</p>
+{% endblock %}
