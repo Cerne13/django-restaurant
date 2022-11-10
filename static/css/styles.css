@@ -2,6 +2,11 @@ body {
     background-color: ivory;
 }
 
+thead {
+    background-color: slategrey;
+    color: linen;
+}
+
 .main-content {
     max-width: 80%;
     margin: 2em auto;

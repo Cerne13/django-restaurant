@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block title %}
+  <title>Our cooks</title>
+{% endblock %}
+
+{% block content %}
+  <h2>Our cooks</h2>
+  <br>
+
+  {% if cook_list %}
+    <table class="table table-striped">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Last name</th>
+        <th>Experience</th>
+      </tr>
+      </thead>
+      <tbody>
+      {% for cook in cook_list %}
+        <tr>
+          <td>{{ cook.first_name }}</td>
+          <td>{{ cook.last_name }}</td>
+          <td>{{ cook.years_of_experience }}</td>
+        </tr>
+
+      {% endfor %}
+
+      </tbody>
+    </table>
+
+  {% else %}
+    <p>Sorry, no cooks found. Strange...</p>
+  {% endif %}
+{% endblock %}

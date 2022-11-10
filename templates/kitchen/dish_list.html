@@ -1,13 +1,35 @@
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport"
-        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Our dishes</title>
-</head>
-<body>
+{% extends "base.html" %}
 
-</body>
-</html>
+{% block title %}
+  <title>Our dishes</title>
+{% endblock %}
+
+{% block content %}
+  <h2>Everything you can eat!</h2>
+  <br>
+
+  {% if dish_list %}
+    <table class="table table-striped"">
+      <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Cost</th>
+      </tr>
+      </thead>
+      <tbody>
+
+      {% for dish in dish_list %}
+        <tr>
+          <td>{{ dish.dish_type }}</td>
+          <td>{{ dish.name }}</td>
+          <td> <strong>{{ dish.price }}</strong> USD</td>
+        </tr>
+      {% endfor %}
+
+      </tbody>
+    </table>
+  {% else %}
+    <p>Sorry. No dishes yet...</p>
+  {% endif %}
+{% endblock %}
