@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block title %}
+  <title>All the dish types</title>
+{% endblock %}
+
+{% block content %}
+  <h1>All the dish types we serve here</h1>
+
+  {% if dish_type_list %}
+    {% for dish_type in dish_type_list %}
+      <br>
+      <p>{{ dish_type.name }}</p>
+      <ul>
+        {% if dish_type.dish.all %}
+          {% for dish in dish_type.dish.all %}
+            <li>
+              <a href={% url "kitchen:dish-detail" pk=dish.id %}>{{ dish.name }}    </a>
+              <span>({{ dish.price }} USD)</span>
+            </li>
+          {% endfor %}
+        {% else %}
+          == No dishes yet ==
+        {% endif %}
+      </ul>
+    {% endfor %}
+
+  {% endif %}
+{% endblock %}
