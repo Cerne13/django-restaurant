@@ -13,7 +13,9 @@
   <ul>
     {% for dish in cook.dish.all %}
       <li>
-        <strong>{{ dish.name }}</strong> ({{ dish.price }} USD)
+        <strong>
+          <a href={% url "kitchen:dish-detail" pk=dish.id %}>{{ dish.name }}</a>
+        </strong> ({{ dish.price }} USD)
       </li>
     {% endfor %}
 

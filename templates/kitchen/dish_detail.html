@@ -9,13 +9,16 @@
   <p>Price: {{ dish.price }} USD</p>
 
   <br>
-  
+
   <h5>Who can cook it for you?</h5>
   <br>
-  
+
   {% if dish.cooks %}
     {% for cook in dish.cooks.all %}
-      <p>{{ cook.first_name }} {{ cook.last_name }}</p>
+      <p>
+        <a href={% url "kitchen:cook-detail" pk=cook.id %}>{{ cook.first_name }} {{ cook.last_name }}</a>
+      </p>
+
 
     {% endfor %}
 
