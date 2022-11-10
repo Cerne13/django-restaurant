@@ -3,10 +3,7 @@ from django.db import models
 
 
 class Cook(AbstractUser):
-    years_of_experience = models.DecimalField(
-        max_digits=3,
-        decimal_places=1,
-    )
+    years_of_experience = models.IntegerField(null=True, blank=True)
 
     class Meta:
         ordering = ["username"]
