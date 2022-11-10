@@ -20,6 +20,7 @@ def index(request):
 class DishList(generic.ListView):
     model = Dish
     fields = "__all__"
+    paginate_by = 10
 
 
 class DishDetail(generic.DetailView):
@@ -38,6 +39,7 @@ class DishTypeList(generic.ListView):
 class CookList(generic.ListView):
     model = Cook
     fields = "__all__"
+    paginate_by = 10
 
 
 class CookDetail(generic.DetailView):
