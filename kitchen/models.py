@@ -3,9 +3,13 @@ from django.db import models
 
 
 class Cook(AbstractUser):
-    years_of_experience = models.DecimalField()
+    years_of_experience = models.DecimalField(
+        max_digits=3,
+        decimal_places=1,
+    )
 
     class Meta:
+        ordering = ["username"]
         verbose_name = "cook"
         verbose_name_plural = "cooks"
 
@@ -16,6 +20,9 @@ class Cook(AbstractUser):
 class DishType(models.Model):
     name = models.CharField(max_length=63)
 
+    class Meta:
+        ordering = ["name"]
+
     def __str__(self):
         return self.name
 
@@ -23,7 +30,10 @@ class DishType(models.Model):
 class Dish(models.Model):
     name = models.CharField(max_length=63)
     description = models.CharField(max_length=255)
-    price = models.DecimalField()
+    price = models.DecimalField(
+        max_digits=12,
+        decimal_places=2,
+    )
     dish_type = models.ForeignKey(
         to=DishType,
         on_delete=models.CASCADE,
@@ -33,6 +43,9 @@ class Dish(models.Model):
         to=Cook,
         related_name="dish",
     )
+
+    class Meta:
+        ordering = ["name"]
 
     def __str__(self):
         return f"{self.name}: {self.price} USD"
