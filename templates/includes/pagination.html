@@ -7,7 +7,9 @@
             </li>
           {% endif %}
 
-          <li>{{ page_obj.number }}</li>
+          <li class="btn btn-outline-secondary">
+            {{ page_obj.number }} of {{ paginator.num_pages }}
+          </li>
 
           {% if page_obj.has_next %}
             <li class="ml-2 btn btn-outline-secondary">
