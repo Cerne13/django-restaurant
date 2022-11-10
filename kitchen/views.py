@@ -20,10 +20,20 @@ def index(request):
 class DishList(generic.ListView):
     model = Dish
     fields = "__all__"
-    success_url = reverse_lazy("taxi:manufacturer-list")
+
+
+class DishDetail(generic.DetailView):
+    model = Dish
+    fields = "__all__"
+    queryset = Dish.objects.all().prefetch_related("cooks")
 
 
 class CookList(generic.ListView):
     model = Cook
     fields = "__all__"
-    success_url = reverse_lazy("taxi:manufacturer-list")
+
+
+class CookDetail(generic.DetailView):
+    model = Cook
+    fields = "__all__"
+    queryset = Cook.objects.all().prefetch_related("dish")

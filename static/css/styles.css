@@ -7,6 +7,11 @@ thead {
     color: linen;
 }
 
+ul {
+    list-style-type: none;
+    line-height: 2em;
+}
+
 .main-content {
     max-width: 80%;
     margin: 2em auto;

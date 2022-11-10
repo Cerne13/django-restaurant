@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block title %}
+  <title>{{ dish.name }}: {{ dish.price }} USD</title>
+{% endblock %}
+
+{% block content %}
+  <h4>{{ dish.name }}</h4>
+  <p>Price: {{ dish.price }} USD</p>
+
+  <br>
+  
+  <h5>Who can cook it for you?</h5>
+  <br>
+  
+  {% if dish.cooks %}
+    {% for cook in dish.cooks.all %}
+      <p>{{ cook.first_name }} {{ cook.last_name }}</p>
+
+    {% endfor %}
+
+
+  {% endif %}
+{% endblock %}

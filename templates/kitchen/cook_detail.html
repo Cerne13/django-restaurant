@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block title %}
+  <title>{{ cook.first_name }} {{ cook.last_name }}</title>
+{% endblock %}
+
+{% block content %}
+  <p>{{ cook.first_name }} {{ cook.last_name }}</p>
+  <br>
+
+  <p>Is responsible for:</p>
+
+  <ul>
+    {% for dish in cook.dish.all %}
+      <li>
+        <strong>{{ dish.name }}</strong> ({{ dish.price }} USD)
+      </li>
+    {% endfor %}
+
+  </ul>
+{% endblock %}
