@@ -1,5 +1,5 @@
 body {
-    background-color: ivory;
+    background-color: darkslategray;
 }
 
 thead {
@@ -15,6 +15,7 @@ ul {
 .main-content {
     max-width: 80%;
     margin: 2em auto;
+    padding: 2em 1em;
     background-color: #fff;
 }
 

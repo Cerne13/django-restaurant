@@ -14,6 +14,19 @@ class DishSearchForm(forms.Form):
     )
 
 
+class DishTypeSearchForm(forms.Form):
+    title = forms.CharField(
+        max_length=255,
+        required=False,
+        label="",
+        widget=forms.TextInput(
+            attrs={
+                "placeholder": "Enter a dish type name"
+            }
+        )
+    )
+
+
 class CookSearchForm(forms.Form):
     title = forms.CharField(
         max_length=255,
