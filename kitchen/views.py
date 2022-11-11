@@ -3,7 +3,7 @@ from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views import generic
 
-from kitchen.forms import DishSearchForm
+from kitchen.forms import DishSearchForm, CookSearchForm
 from kitchen.models import Cook, Dish, DishType
 
 
@@ -96,13 +96,31 @@ class DishTypeDeleteView(LoginRequiredMixin, generic.DeleteView):
     success_url = reverse_lazy("kitchen:dish-types")
 
 
-class CookList(generic.ListView):
+class CookListView(generic.ListView):
     model = Cook
-    fields = "__all__"
+    queryset = Cook.objects.all()
     paginate_by = 10
 
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super(CookListView, self).get_context_data(**kwargs)
 
-class CookDetail(generic.DetailView):
+        title = self.request.GET.get("title", "")
+
+        context["search_form"] = CookSearchForm(initial={
+            "title": title
+        })
+        return context
+
+    def get_queryset(self):
+        form = CookSearchForm(self.request.GET)
+
+        if form.is_valid():
+            return self.queryset.filter(first_name__icontains=form.cleaned_data["title"])
+
+        return self.queryset
+
+
+class CookDetailView(generic.DetailView):
     model = Cook
     fields = "__all__"
     queryset = Cook.objects.all().prefetch_related("dish")
