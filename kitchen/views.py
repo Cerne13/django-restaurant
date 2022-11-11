@@ -18,13 +18,13 @@ def index(request):
     return render(request, "kitchen/index.html", context=context)
 
 
-class DishList(generic.ListView):
+class DishListView(generic.ListView):
     model = Dish
     fields = "__all__"
     paginate_by = 10
 
 
-class DishDetail(generic.DetailView):
+class DishDetailView(generic.DetailView):
     model = Dish
     fields = "__all__"
     queryset = Dish.objects.all().prefetch_related("cooks")
