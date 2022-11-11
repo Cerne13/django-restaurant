@@ -101,6 +101,8 @@ AUTH_PASSWORD_VALIDATORS = [
 
 AUTH_USER_MODEL = "kitchen.Cook"
 
+LOGIN_REDIRECT_URL = "/kitchen/"
+
 # Internationalization
 # https://docs.djangoproject.com/en/4.1/topics/i18n/
 
