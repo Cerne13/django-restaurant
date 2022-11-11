@@ -87,3 +87,21 @@ class CookDetail(generic.DetailView):
     model = Cook
     fields = "__all__"
     queryset = Cook.objects.all().prefetch_related("dish")
+
+
+class CookCreateView(LoginRequiredMixin, generic.CreateView):
+    model = Cook
+    fields = '__all__'
+    success_url = reverse_lazy("kitchen:cooks-list")
+
+
+class CookUpdateView(LoginRequiredMixin, generic.UpdateView):
+    model = Cook
+    fields = '__all__'
+    success_url = reverse_lazy("kitchen:cooks-list")
+
+
+class CookDeleteView(LoginRequiredMixin, generic.DeleteView):
+    model = Cook
+    fields = '__all__'
+    success_url = reverse_lazy("kitchen:cooks-list")
