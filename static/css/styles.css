@@ -17,3 +17,8 @@ ul {
     margin: 2em auto;
     background-color: #fff;
 }
+
+.dish-type-table {
+    table-layout: fixed;
+    width: 100%;
+}
