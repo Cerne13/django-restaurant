@@ -1,5 +1,7 @@
 body {
-    background-color: darkslategray;
+    background-image: url("../img/food_bg.jpeg");
+    background-size: cover;
+    /*backdrop-filter: blur(10px);*/
 }
 
 thead {
@@ -12,14 +14,39 @@ ul {
     line-height: 2em;
 }
 
+.index-header {
+    color: orangered;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 2em;
+}
+
 .main-content {
     max-width: 80%;
     margin: 2em auto;
     padding: 2em 1em;
     background-color: #fff;
+    min-height: 90vh;
+    box-shadow: 3px 2px 9px 0px rgba(0,0,0,0.75);
 }
 
 .dish-type-table {
     table-layout: fixed;
     width: 100%;
+}
+
+.card-section {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 2em;
+    margin-bottom: 2em;
+}
+
+.card {
+    border-radius: 5%;
+    box-shadow: 3px 2px 9px 0px rgba(0,0,0,0.75);
+}
+
+.card-img-top {
+    border-radius: 5% 5% 0 0;
 }
