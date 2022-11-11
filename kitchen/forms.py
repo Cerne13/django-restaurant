@@ -1,7 +1,8 @@
 from django import forms
+from django.contrib.auth import get_user_model
 from django.core.exceptions import ValidationError
 
-from kitchen.models import Cook
+from kitchen.models import Cook, Dish
 
 
 def validate_experience(years):
@@ -21,11 +22,23 @@ class CookForm(forms.ModelForm):
             "username",
             "first_name",
             "last_name",
-            "years_of_experience"
+            "years_of_experience",
         )
 
     def clean_years_of_experience(self):
         return validate_experience(self.cleaned_data["years_of_experience"])
+
+
+class DishForm(forms.ModelForm):
+    cooks = forms.ModelMultipleChoiceField(
+        queryset=get_user_model().objects.all(),
+        widget=forms.CheckboxSelectMultiple,
+        required=False,
+    )
+
+    class Meta:
+        model = Dish
+        fields = "__all__"
 
 
 class DishSearchForm(forms.Form):
