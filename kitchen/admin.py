@@ -12,14 +12,10 @@ class CookAdmin(UserAdmin):
 
     fieldsets = (
         (None, {"fields": ("username", "password")}),
-        (("Personal info",), {
-            "fields": (
-                "first_name",
-                "last_name",
-                "email",
-                "years_of_experience"
-            )
-        }),
+        (
+            ("Personal info",),
+            {"fields": ("first_name", "last_name", "email", "years_of_experience")},
+        ),
         (
             ("Permissions",),
             {

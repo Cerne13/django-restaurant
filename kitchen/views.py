@@ -7,7 +7,8 @@ from kitchen.forms import (
     DishSearchForm,
     CookSearchForm,
     DishTypeSearchForm,
-    CookForm, DishForm,
+    CookForm,
+    DishForm,
 )
 from kitchen.models import Cook, Dish, DishType
 
@@ -34,9 +35,7 @@ class DishListView(generic.ListView):
 
         title = self.request.GET.get("title", "")
 
-        context["search_form"] = DishSearchForm(initial={
-            "title": title
-        })
+        context["search_form"] = DishSearchForm(initial={"title": title})
         return context
 
     def get_queryset(self):
@@ -83,9 +82,7 @@ class DishTypeListView(generic.ListView):
 
         title = self.request.GET.get("title", "")
 
-        context["search_form"] = DishTypeSearchForm(initial={
-            "title": title
-        })
+        context["search_form"] = DishTypeSearchForm(initial={"title": title})
         return context
 
     def get_queryset(self):
@@ -130,16 +127,16 @@ class CookListView(generic.ListView):
 
         title = self.request.GET.get("title", "")
 
-        context["search_form"] = CookSearchForm(initial={
-            "title": title
-        })
+        context["search_form"] = CookSearchForm(initial={"title": title})
         return context
 
     def get_queryset(self):
         form = CookSearchForm(self.request.GET)
 
         if form.is_valid():
-            return self.queryset.filter(first_name__icontains=form.cleaned_data["title"])
+            return self.queryset.filter(
+                first_name__icontains=form.cleaned_data["title"]
+            )
 
         return self.queryset
 

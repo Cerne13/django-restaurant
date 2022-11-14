@@ -15,7 +15,6 @@ def validate_experience(years):
 
 
 class CookForm(forms.ModelForm):
-
     class Meta:
         model = Cook
         fields = (
@@ -46,11 +45,7 @@ class DishSearchForm(forms.Form):
         max_length=255,
         required=False,
         label="",
-        widget=forms.TextInput(
-            attrs={
-                "placeholder": "Enter a dish name"
-            }
-        )
+        widget=forms.TextInput(attrs={"placeholder": "Enter a dish name"}),
     )
 
 
@@ -59,11 +54,7 @@ class DishTypeSearchForm(forms.Form):
         max_length=255,
         required=False,
         label="",
-        widget=forms.TextInput(
-            attrs={
-                "placeholder": "Enter a dish type name"
-            }
-        )
+        widget=forms.TextInput(attrs={"placeholder": "Enter a dish type name"}),
     )
 
 
@@ -72,9 +63,5 @@ class CookSearchForm(forms.Form):
         max_length=255,
         required=False,
         label="",
-        widget=forms.TextInput(
-            attrs={
-                "placeholder": "Enter a cook's name"
-            }
-        )
+        widget=forms.TextInput(attrs={"placeholder": "Enter a cook's name"}),
     )
