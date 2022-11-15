@@ -2,6 +2,8 @@
 ### Little app to track cooks and dishes
 
 ---
+[Project deployed to render.com](https://the-django-kitchen.onrender.com/)
+---
 
 Maybe will apply additional functionality later
 
