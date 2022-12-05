@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+  <h1 class="index-header">More than just food!</h1>
+
+
+  <div class="card-section">
+
+    <div class="card" style="width: 18rem;">
+      <a href={% url "kitchen:cooks-list" %}>
+        <img class="card-img-top" src="{% static "img/cook.jpg" %}" alt="Cook">
+        <div class="card-body">
+          <p class="card-text">We have {{ num_cooks }} cooks</p>
+        </div>
+      </a>
+
+    </div>
+
+    <div class="card" style="width: 18rem;">
+      <a href={% url "kitchen:dishes-list" %}>
+        <img class="card-img-top" src="{% static "img/dishes.jpg" %}" alt="Delicious food">
+        <div class="card-body">
+          <p class="card-text">...and {{ num_dishes }} delicious dishes!</p>
+        </div>
+      </a>
+    </div>
+  </div>
+{% endblock %}

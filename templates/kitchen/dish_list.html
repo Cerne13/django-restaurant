@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% load crispy_forms_filters %}
+
+{% block title %}
+  <title>Our dishes</title>
+{% endblock %}
+
+{% block content %}
+  <h2>Everything you can eat!</h2>
+  <br>
+
+  {% if user.is_authenticated %}
+    <a class="btn btn-outline-primary mb-4" href={% url "kitchen:dish-create" %}>Create a new dish</a>
+    <br>
+  {% endif %}
+
+  <form class="form-inline mb-4" action="">
+    {{ search_form|crispy }}
+    <input class="btn btn-outline-primary" type="submit" value="Search">
+  </form>
+
+  {% if dish_list %}
+    <table class="table table-striped"">
+    <thead>
+    <tr>
+      <th>Type</th>
+      <th>Name</th>
+      <th>Cost</th>
+    </tr>
+    </thead>
+    <tbody>
+
+    {% for dish in dish_list %}
+      <tr>
+        <td>{{ dish.dish_type }}</td>
+        <td>
+          <a href={% url "kitchen:dish-detail" pk=dish.id %}>{{ dish.name }}</a>
+        </td>
+        <td><strong>{{ dish.price }}</strong> USD</td>
+      </tr>
+    {% endfor %}
+
+    </tbody>
+    </table>
+  {% else %}
+    <p>Sorry. No dishes yet...</p>
+  {% endif %}
+{% endblock %}

@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block title %}
+  <title>{{ cook.first_name }} {{ cook.last_name }}</title>
+{% endblock %}
+
+{% block content %}
+  <h2>{{ cook.first_name }} {{ cook.last_name }}</h2>
+  <h4>Experience: {{ cook.years_of_experience }} years</h4>
+  <br>
+
+  {% if user.is_authenticated %}
+    <div class="mb-4">
+      <a class="btn btn-outline-secondary mr-4" href={% url "kitchen:cook-update" pk=cook.id %}>Update</a>
+      <a class="btn btn-outline-danger" href={% url "kitchen:cook-delete" pk=cook.id %}>Delete</a>
+    </div>
+  {% endif %}
+
+  <hr>
+
+  <p>Is responsible for:</p>
+
+  <ul>
+    {% for dish in cook.dish.all %}
+      <li>
+        <strong>
+          <a href={% url "kitchen:dish-detail" pk=dish.id %}>{{ dish.name }}</a>
+        </strong> ({{ dish.price }} USD)
+      </li>
+    {% endfor %}
+
+  </ul>
+{% endblock %}
