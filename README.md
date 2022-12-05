@@ -41,3 +41,13 @@ Python 3 must be installed
 - -  pip install -r requirements.txt
 - - python manage.py migrate
 - - python manage.py runserver
+
+---
+## Demo
+![image](https://user-images.githubusercontent.com/50919165/205625754-d19245fb-2227-47b0-916e-e65a2754c33d.png)
+
+![image](https://user-images.githubusercontent.com/50919165/205625837-8bdf7fdd-1e96-499a-8b9e-9e4969731195.png)
+
+![image](https://user-images.githubusercontent.com/50919165/205625967-a27d114f-29ea-454b-9db8-8e0fbc4cf5ed.png)
+
+
